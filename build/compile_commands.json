@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/antek/PAMSI/PAMSI-projekt-3/build",
+  "command": "/usr/bin/c++   -I/home/antek/PAMSI/PAMSI-projekt-3/build -I/home/antek/PAMSI/PAMSI-projekt-3/inc  -g   -Wall -Wextra -Wpedantic -Wno-switch-enum -Werror -std=c++17 -o CMakeFiles/main.dir/app/main.cpp.o -c /home/antek/PAMSI/PAMSI-projekt-3/app/main.cpp",
+  "file": "/home/antek/PAMSI/PAMSI-projekt-3/app/main.cpp"
+},
+{
+  "directory": "/home/antek/PAMSI/PAMSI-projekt-3/build",
+  "command": "/usr/bin/c++   -I/home/antek/PAMSI/PAMSI-projekt-3/build -I/home/antek/PAMSI/PAMSI-projekt-3/inc  -g   -std=c++17 -o CMakeFiles/program.dir/src/board.cpp.o -c /home/antek/PAMSI/PAMSI-projekt-3/src/board.cpp",
+  "file": "/home/antek/PAMSI/PAMSI-projekt-3/src/board.cpp"
+}
+]
