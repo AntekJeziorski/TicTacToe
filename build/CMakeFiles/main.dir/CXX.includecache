@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../inc/board.hh
+../inc/ticTacToe.hh
 iostream
 -
 
@@ -15,6 +15,6 @@ iostream
 -
 bits/stdc++.h
 -
-board.hh
-/home/antek/PAMSI/PAMSI-projekt-3/app/board.hh
+ticTacToe.hh
+/home/antek/PAMSI/PAMSI-projekt-3/app/ticTacToe.hh
 

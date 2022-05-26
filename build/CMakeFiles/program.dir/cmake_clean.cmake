@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/program.dir/src/board.cpp.o"
+  "CMakeFiles/program.dir/src/ticTacToe.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -163,32 +163,32 @@ app/main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/app/main.cpp.s
 .PHONY : app/main.cpp.s
 
-src/board.o: src/board.cpp.o
+src/ticTacToe.o: src/ticTacToe.cpp.o
 
-.PHONY : src/board.o
+.PHONY : src/ticTacToe.o
 
 # target to build an object file
-src/board.cpp.o:
-	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/board.cpp.o
-.PHONY : src/board.cpp.o
+src/ticTacToe.cpp.o:
+	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/ticTacToe.cpp.o
+.PHONY : src/ticTacToe.cpp.o
 
-src/board.i: src/board.cpp.i
+src/ticTacToe.i: src/ticTacToe.cpp.i
 
-.PHONY : src/board.i
+.PHONY : src/ticTacToe.i
 
 # target to preprocess a source file
-src/board.cpp.i:
-	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/board.cpp.i
-.PHONY : src/board.cpp.i
+src/ticTacToe.cpp.i:
+	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/ticTacToe.cpp.i
+.PHONY : src/ticTacToe.cpp.i
 
-src/board.s: src/board.cpp.s
+src/ticTacToe.s: src/ticTacToe.cpp.s
 
-.PHONY : src/board.s
+.PHONY : src/ticTacToe.s
 
 # target to generate assembly for a file
-src/board.cpp.s:
-	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/board.cpp.s
-.PHONY : src/board.cpp.s
+src/ticTacToe.cpp.s:
+	$(MAKE) -f CMakeFiles/program.dir/build.make CMakeFiles/program.dir/src/ticTacToe.cpp.s
+.PHONY : src/ticTacToe.cpp.s
 
 # Help Target
 help:
@@ -203,9 +203,9 @@ help:
 	@echo "... app/main.o"
 	@echo "... app/main.i"
 	@echo "... app/main.s"
-	@echo "... src/board.o"
-	@echo "... src/board.i"
-	@echo "... src/board.s"
+	@echo "... src/ticTacToe.o"
+	@echo "... src/ticTacToe.i"
+	@echo "... src/ticTacToe.s"
 .PHONY : help
 
 

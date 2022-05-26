@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/antek/PAMSI/PAMSI-projekt-3/src/board.cpp" "/home/antek/PAMSI/PAMSI-projekt-3/build/CMakeFiles/program.dir/src/board.cpp.o"
+  "/home/antek/PAMSI/PAMSI-projekt-3/src/ticTacToe.cpp" "/home/antek/PAMSI/PAMSI-projekt-3/build/CMakeFiles/program.dir/src/ticTacToe.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

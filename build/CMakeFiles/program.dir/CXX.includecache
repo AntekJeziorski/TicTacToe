@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../inc/board.hh
+../inc/ticTacToe.hh
 iostream
 -
 
-/home/antek/PAMSI/PAMSI-projekt-3/src/board.cpp
-board.hh
-/home/antek/PAMSI/PAMSI-projekt-3/src/board.hh
+/home/antek/PAMSI/PAMSI-projekt-3/src/ticTacToe.cpp
+ticTacToe.hh
+/home/antek/PAMSI/PAMSI-projekt-3/src/ticTacToe.hh
 
