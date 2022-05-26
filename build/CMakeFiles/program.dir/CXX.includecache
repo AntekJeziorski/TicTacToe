@@ -9,6 +9,10 @@
 ../inc/ticTacToe.hh
 iostream
 -
+bits/stdc++.h
+-
+algorithm
+-
 
 /home/antek/PAMSI/PAMSI-projekt-3/src/ticTacToe.cpp
 ticTacToe.hh

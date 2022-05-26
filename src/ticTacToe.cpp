@@ -37,7 +37,7 @@ void ticTacToe::printBoard() {
     }
 }
 
-void ticTacToe::fillField(int row, int col, char ch){
+void ticTacToe::fillField(int row, int col, char ch) {
 
     fields[row-1][col-1] = ch;
 
@@ -52,9 +52,9 @@ int ticTacToe::checkWin() {
                 break;
             if(j == size - 2) {    
                 if (fields[i][0] == 'X')
-                    return 10;
-                else if (fields[i][0]=='O')
                     return -10;
+                else if (fields[i][0]=='O')
+                    return 10;
             }
         }
     }
@@ -65,9 +65,9 @@ int ticTacToe::checkWin() {
                 break;
             if(j == size - 2) {    
                 if (fields[0][i]=='X')
-                    return 10;
-                else if (fields[0][i]=='O')
                     return -10;
+                else if (fields[0][i]=='O')
+                    return 10;
             }
             
         }
@@ -78,9 +78,9 @@ int ticTacToe::checkWin() {
             break;
         if(i == size - 2) {
             if (fields[0][0]=='X')
-                return 10;
-            else if (fields[0][0]=='O')
                 return -10;
+            else if (fields[0][0]=='O')
+                return 10;
         }
     }
 
@@ -89,11 +89,95 @@ int ticTacToe::checkWin() {
             break;
         if(i == size - 2) {
             if (fields[size-1][0]=='X')
-                return 10;
-            else if (fields[size-1][0]=='O')
                 return -10;
+            else if (fields[size-1][0]=='O')
+                return 10;
         }
     }
  
     return 0; // jesli nikt nie wygral zwroc 0
 }
+
+bool ticTacToe::leftMove() {
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            if (fields[i][j] == ' ')
+                return true;
+    return false;
+}
+
+int ticTacToe::minMax(int depth, bool maxPlayer) {
+
+    int score = checkWin();
+
+    if (score == 10)
+        return score;
+ 
+    if (score == -10)
+        return score;
+
+    if (leftMove() == false)
+        return 0;
+ 
+    if (maxPlayer) {
+        int best = -1000;
+ 
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (fields[i][j] == ' ') {
+                    fields[i][j] = 'O';
+                    best = std::max(best, minMax(depth+1, !maxPlayer));
+                    fields[i][j] = ' ';
+                }
+            }
+        }
+        return best;
+    }
+ 
+    else {
+
+        int best = 1000;
+ 
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (fields[i][j]==' ') {
+                    fields[i][j] = 'X';
+                    best = std::min(best, minMax(depth+1, !maxPlayer));
+                    fields[i][j] = ' ';
+                }
+            }
+        }
+        return best;
+    }
+}
+
+
+move ticTacToe::bestMove() {
+
+    int best = -100;
+    int moveVal = -100;
+    move bestMove;
+    bestMove.bestRow = -1;
+    bestMove.bestCol = -1;
+ 
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (fields[i][j] == ' ') {
+                fields[i][j] = 'O';
+                moveVal = minMax(0, false);
+                fields[i][j] = ' ';
+                if (moveVal > best) {
+                    bestMove.bestRow = i;
+                    bestMove.bestCol = j;
+                    best = moveVal;
+                }
+            }
+        }
+    }
+ 
+    return bestMove;
+
+}
+
+
+

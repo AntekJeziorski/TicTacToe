@@ -1,4 +1,12 @@
 #include <iostream>
+#include<bits/stdc++.h>
+#include <algorithm>
+
+struct move {
+
+    int bestRow, bestCol;
+
+};
 
 class ticTacToe {
 
@@ -11,11 +19,9 @@ class ticTacToe {
         void printBoard();
         void fillField(int row, int col, char ch);
         int checkWin();
-        int minMax();
-};
-
-struct move {
-
-    int row, col;
+        bool leftMove();
+        int minMax(int depth, bool maxPlayer);
+        move bestMove();
 
 };
+
