@@ -5,14 +5,14 @@
 int main() {
 
     int size, maxDepth;
-    std::cout << "Size: ";
+    std::cout << "Choose size: ";
     std::cin >> size;
-    std::cout << "Max depth: ";
+    std::cout << "Choose max depth: ";
     std::cin >> maxDepth;
 
     ticTacToe game(size, maxDepth);
     int row, col;
-    
+
     move AImove;
 
     AImove.bestCol = -1;
@@ -39,8 +39,6 @@ int main() {
             break;
 
     }
-
-
 
     return 0;
 } 

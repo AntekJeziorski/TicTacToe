@@ -21,7 +21,7 @@ ticTacToe::ticTacToe(int newSize, int newMaxDepth) {
 
 void ticTacToe::printBoard() {
 
-    system("clear");
+    system("clear"); // czyszczenie terminala
 
     std::cout << "\t";
 
@@ -100,7 +100,7 @@ int ticTacToe::checkWin() {
     return 0; // jesli nikt nie wygral zwroc 0
 }
 
-bool ticTacToe::leftMove() {
+bool ticTacToe::leftMove() { // metoda sprawdzajaca czy zostaly wolne pola
     for (int i = 0; i < size; i++)
         for (int j = 0; j < size; j++)
             if (fields[i][j] == ' ')
@@ -112,15 +112,15 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
 
     int score = checkWin();
 
-    if(depth == maxDepth) {
+    if(depth == maxDepth) { // ograniczenie glebokosci rekurencji
         if (maxPlayer)
-        return score - depth;
+            return score - depth;
 
         if (!maxPlayer)
-        return score + depth;
+            return score + depth;
 
         if (leftMove() == false)
-        return 0;
+            return 0;
     }
 
     if (score == 10)
@@ -132,15 +132,15 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
     if (leftMove() == false)
         return 0;
 
-    if (maxPlayer) {
+    if (maxPlayer) { // jesli gra gracz maksymalizujacy
         int best = -1000;
  
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (fields[i][j] == ' ') {
                     fields[i][j] = 'O';
-                    int val = minMax(depth + 1, false, alpha, beta);
-                    best = std::max(best, val);
+                    int tmp = minMax(depth + 1, false, alpha, beta);
+                    best = std::max(best, tmp);
                     alpha = std::max(alpha, best);
                     fields[i][j] = ' ';
                     if (beta <= alpha)
@@ -154,7 +154,7 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
         return best;
     }
  
-    else {
+    else { // jesli gra gracz minimalizujacy
 
         int best = 1000;
  
@@ -162,8 +162,8 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
             for (int j = 0; j < size; j++) {
                 if (fields[i][j]==' ') {
                     fields[i][j] = 'X';
-                    int val = minMax(depth + 1, true, alpha, beta);
-                    best = std::min(best, val);
+                    int tmp = minMax(depth + 1, true, alpha, beta);
+                    best = std::min(best, tmp);
                     beta = std::min(beta, best);
                     fields[i][j] = ' ';
                     if (beta <= alpha)
@@ -178,7 +178,7 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
 }
 
 
-move ticTacToe::bestMove() {
+move ticTacToe::bestMove() { // wyszukiwanie najlepszego ruchu
 
     int best = -1000;
     int moveVal = -1000;
@@ -192,16 +192,16 @@ move ticTacToe::bestMove() {
                 fields[i][j] = 'O';
                 moveVal = minMax(0, false, -1000, 1000);
                 fields[i][j] = ' ';
-                if (moveVal > best) {
-                    bestMove.bestRow = i;
+                if (moveVal > best) { // jesli ocena ruchu jest wieksza od najlepszej znalezionej
+                    bestMove.bestRow = i; // przypisz wspolrzedne ruchu
                     bestMove.bestCol = j;
-                    best = moveVal;
+                    best = moveVal; // oraz ustal nowa najlepsza wartosc
                 }
             }
         }
     }
  
-    return bestMove;
+    return bestMove; // zwroc najlepszy ruch
 
 }
 
