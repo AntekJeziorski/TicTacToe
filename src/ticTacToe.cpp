@@ -1,6 +1,6 @@
 #include "ticTacToe.hh"
 
-ticTacToe::ticTacToe(int newSize) {
+ticTacToe::ticTacToe(int newSize, int newMaxDepth) {
 
     size = newSize;
     fields = new char*[size];
@@ -14,6 +14,8 @@ ticTacToe::ticTacToe(int newSize) {
             fields[i][j] = ' ';
         }
     }
+
+    maxDepth = newMaxDepth;
 
 }
 
@@ -106,19 +108,30 @@ bool ticTacToe::leftMove() {
     return false;
 }
 
-int ticTacToe::minMax(int depth, bool maxPlayer) {
+int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
 
     int score = checkWin();
 
+    if(depth == maxDepth) {
+        if (maxPlayer)
+        return score - depth;
+
+        if (!maxPlayer)
+        return score + depth;
+
+        if (leftMove() == false)
+        return 0;
+    }
+
     if (score == 10)
-        return score;
- 
+        return score - depth;
+
     if (score == -10)
-        return score;
+        return score + depth;
 
     if (leftMove() == false)
         return 0;
- 
+
     if (maxPlayer) {
         int best = -1000;
  
@@ -126,11 +139,18 @@ int ticTacToe::minMax(int depth, bool maxPlayer) {
             for (int j = 0; j < size; j++) {
                 if (fields[i][j] == ' ') {
                     fields[i][j] = 'O';
-                    best = std::max(best, minMax(depth+1, !maxPlayer));
+                    int val = minMax(depth + 1, false, alpha, beta);
+                    best = std::max(best, val);
+                    alpha = std::max(alpha, best);
                     fields[i][j] = ' ';
+                    if (beta <= alpha)
+                        break;
                 }
+                if (beta <= alpha)
+                    break;
             }
         }
+
         return best;
     }
  
@@ -142,9 +162,15 @@ int ticTacToe::minMax(int depth, bool maxPlayer) {
             for (int j = 0; j < size; j++) {
                 if (fields[i][j]==' ') {
                     fields[i][j] = 'X';
-                    best = std::min(best, minMax(depth+1, !maxPlayer));
+                    int val = minMax(depth + 1, true, alpha, beta);
+                    best = std::min(best, val);
+                    beta = std::min(beta, best);
                     fields[i][j] = ' ';
+                    if (beta <= alpha)
+                        break;
                 }
+                if (beta <= alpha)
+                    break;
             }
         }
         return best;
@@ -154,8 +180,8 @@ int ticTacToe::minMax(int depth, bool maxPlayer) {
 
 move ticTacToe::bestMove() {
 
-    int best = -100;
-    int moveVal = -100;
+    int best = -1000;
+    int moveVal = -1000;
     move bestMove;
     bestMove.bestRow = -1;
     bestMove.bestCol = -1;
@@ -164,7 +190,7 @@ move ticTacToe::bestMove() {
         for (int j = 0; j < size; j++) {
             if (fields[i][j] == ' ') {
                 fields[i][j] = 'O';
-                moveVal = minMax(0, false);
+                moveVal = minMax(0, false, -1000, 1000);
                 fields[i][j] = ' ';
                 if (moveVal > best) {
                     bestMove.bestRow = i;
