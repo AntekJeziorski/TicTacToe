@@ -46,7 +46,6 @@ void ticTacToe::fillField(int row, int col, char ch) {
 
 }
 
-
 int ticTacToe::checkWin() {
     
     for(int k = 0; k < size - winCharacters + 1; k++) {
@@ -74,7 +73,6 @@ int ticTacToe::checkWin() {
                     else if (fields[k][i]=='O')
                         return 10;
                 }
-                
             }
         }
 
@@ -82,9 +80,9 @@ int ticTacToe::checkWin() {
             if(fields[i][i] != fields[i+1][i+1]) // sprawdzanie wygranej na pierwszej przekatnej
                 break;
             if(i == winCharacters + k - 2) {
-                if (fields[0][0]=='X')
+                if (fields[k][k]=='X')
                     return -10;
-                else if (fields[0][0]=='O')
+                else if (fields[k][k]=='O')
                     return 10;
             }
         }
@@ -93,13 +91,14 @@ int ticTacToe::checkWin() {
             if(fields[size-i-1][i] != fields[size-i-2][i+1]) // sprawdzenie wygranej na drugiej przekątnej
                 break;
             if(i == winCharacters + k - 2) {
-                if (fields[size-1][0]=='X')
+                if (fields[size-1-k][k]=='X')
                     return -10;
-                else if (fields[size-1][0]=='O')
+                else if (fields[size-1-k][k]=='O')
                     return 10;
             }
         }
     }
+
     return 0; // jesli nikt nie wygral zwroc 0
 }
 

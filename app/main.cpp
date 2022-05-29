@@ -32,13 +32,14 @@ int main() {
 
         game.printBoard();
         
-        AImove = game.bestMove();
-        if(AImove.bestCol != -1 && AImove.bestRow != -1)
-            game.fillField(AImove.bestRow + 1, AImove.bestCol + 1, 'O');
-        game.printBoard();
-
-        if((game.checkWin() == 10) || (game.checkWin() == -10) || (game.checkWin() == 0 && game.leftMove() == false))
+        //AImove = game.bestMove();
+        // if(AImove.bestCol != -1 && AImove.bestRow != -1)
+        //     game.fillField(AImove.bestRow + 1, AImove.bestCol + 1, 'O');
+        // game.printBoard();
+        if(game.checkWin() == -10)
             break;
+        //if((game.checkWin() == 10) || (game.checkWin() == -10) || (game.checkWin() == 0 && game.leftMove() == false))
+            
 
     }
 
