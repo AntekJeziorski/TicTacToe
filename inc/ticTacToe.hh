@@ -14,9 +14,10 @@ class ticTacToe {
         int size;
         char** fields;
         int maxDepth;
+        int winCharacters;
     public:
         ticTacToe(){}
-        ticTacToe(int newSize, int newMaxDepth);
+        ticTacToe(int newSize, int newMaxDepth, int newWinCharacters);
         void printBoard();
         void fillField(int row, int col, char ch);
         int checkWin();

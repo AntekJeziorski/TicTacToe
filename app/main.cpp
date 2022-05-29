@@ -4,13 +4,15 @@
 
 int main() {
 
-    int size, maxDepth;
+    int size, maxDepth, winChar;
     std::cout << "Choose size: ";
     std::cin >> size;
     std::cout << "Choose max depth: ";
     std::cin >> maxDepth;
+    std::cout << "Specify number of characers to win :";
+    std::cin >> winChar;
 
-    ticTacToe game(size, maxDepth);
+    ticTacToe game(size, maxDepth, winChar);
     int row, col;
 
     move AImove;
