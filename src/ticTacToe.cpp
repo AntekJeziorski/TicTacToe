@@ -50,14 +50,14 @@ int ticTacToe::checkWin() {
     
     for(int k = 0; k < size - winCharacters + 1; k++) {
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             for(int j = k; j < winCharacters + k - 1; j++) {
-                if (fields[i][j] != fields[i][j+1]) // sprawdzenie wygranej w wierszach
+                if (fields[i][j] != fields[i][j + 1]) // sprawdzenie wygranej w wierszach
                     break;
                 if(j == winCharacters + k - 2) {    
                     if (fields[i][k] == 'X')
                         return -10;
-                    else if (fields[i][k]=='O')
+                    else if (fields[i][k] == 'O')
                         return 10;
                 }
             }
@@ -65,39 +65,62 @@ int ticTacToe::checkWin() {
     
         for (int i = 0; i < size; i++) {
             for(int j = k; j < winCharacters + k - 1; j++) {
-                if (fields[j][i] != fields[j+1][i]) // sprawdzenie wygranej w kolumnach
+                if (fields[j][i] != fields[j + 1][i]) // sprawdzenie wygranej w kolumnach
                     break;
                 if(j == winCharacters + k - 2) {    
-                    if (fields[k][i]=='X')
+                    if (fields[k][i] == 'X')
                         return -10;
-                    else if (fields[k][i]=='O')
+                    else if (fields[k][i] == 'O')
                         return 10;
                 }
             }
         }
+    }
 
-        for(int i = k; i < winCharacters + k - 1; i++) {
-            if(fields[i][i] != fields[i+1][i+1]) // sprawdzanie wygranej na pierwszej przekatnej
-                break;
-            if(i == winCharacters + k - 2) {
-                if (fields[k][k]=='X')
-                    return -10;
-                else if (fields[k][k]=='O')
-                    return 10;
-            }
-        }
 
-        for(int i = k; i < winCharacters + k - 1; i++){
-            if(fields[size-i-1][i] != fields[size-i-2][i+1]) // sprawdzenie wygranej na drugiej przekątnej
-                break;
-            if(i == winCharacters + k - 2) {
-                if (fields[size-1-k][k]=='X')
-                    return -10;
-                else if (fields[size-1-k][k]=='O')
-                    return 10;
+    for(int k = 0; k < size - winCharacters + 1; k++) {
+        for(int l = 0; l < size - winCharacters + 1; l++) {
+            for(int i = 0; i < winCharacters - 1; i++) {
+                if(fields[k + i][l + i] != fields[k + i + 1][l + i + 1]) // sprawdzanie wygranej na pierwszej przekatnej
+                    break;
+                if(i == winCharacters - 2) {
+                    if (fields[k + i][l + i] == 'X')
+                        return -10;
+                    else if (fields[k + i][l + i] == 'O')
+                        return 10;
+                }
             }
         }
     }
+
+    for(int k = 0; k < size - winCharacters + 1; k++) {
+        for(int l = 0; l < size - winCharacters + 1; l++) {
+            for(int i = 0; i < winCharacters - 1; i++){
+                if(fields[size - i - k - 1][l + i] != fields[size - i - k - 2][l + i + 1]) // sprawdzenie wygranej na drugiej przekątnej
+                    break;
+                if(i == winCharacters - 2) {
+                if (fields[size - i - k - 1][l + i] == 'X')
+                    return -10;
+                else if (fields[size - i - k - 1][l + i] == 'O')
+                    return 10;
+                }
+            }
+        }
+    }
+
+
+
+        // for(int i = k; i < winCharacters + k - 1; i++){
+        //     if(fields[size-i-1][i] != fields[size-i-2][i+1]) // sprawdzenie wygranej na drugiej przekątnej
+        //         break;
+        //     if(i == winCharacters + k - 2) {
+        //         if (fields[size-1-k][k]=='X')
+        //             return -10;
+        //         else if (fields[size-1-k][k]=='O')
+        //             return 10;
+        //     }
+        // }
+    
 
     return 0; // jesli nikt nie wygral zwroc 0
 }
