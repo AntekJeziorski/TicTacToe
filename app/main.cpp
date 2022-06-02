@@ -34,11 +34,9 @@ int main() {
         if(game.checkWin() == -10) 
             break;
         AImove = game.bestMove();
-        if(AImove.bestCol != -1 && AImove.bestRow != -1)
-            game.fillField(AImove.bestRow + 1, AImove.bestCol + 1, 'O');
+        if(AImove.bestCol != -1 && AImove.bestRow != -1)    // jesli jest mozliwosc wykonania ruchu
+            game.fillField(AImove.bestRow + 1, AImove.bestCol + 1, 'O');    // AI wykona ruch
         game.printBoard();
-        // if(game.checkWin() == -10)
-        //     break;
         if((game.checkWin() == 10) || (game.checkWin() == 0 && game.leftMove() == false))
             break;
 

@@ -108,20 +108,6 @@ int ticTacToe::checkWin() {
         }
     }
 
-
-
-        // for(int i = k; i < winCharacters + k - 1; i++){
-        //     if(fields[size-i-1][i] != fields[size-i-2][i+1]) // sprawdzenie wygranej na drugiej przekątnej
-        //         break;
-        //     if(i == winCharacters + k - 2) {
-        //         if (fields[size-1-k][k]=='X')
-        //             return -10;
-        //         else if (fields[size-1-k][k]=='O')
-        //             return 10;
-        //     }
-        // }
-    
-
     return 0; // jesli nikt nie wygral zwroc 0
 }
 
@@ -166,11 +152,11 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
                     fields[i][j] = 'O';
                     int tmp = minMax(depth + 1, false, alpha, beta);
                     best = std::max(best, tmp);
-                    alpha = std::max(alpha, best);
+                    alpha = std::max(alpha, best); // szukaj alfy
                     fields[i][j] = ' ';
                     if (beta <= alpha)
                         break;
-                }
+                }                   // jesli badany ruch jest gorszy od poprzedniego przestan przeszukiwac galaz
                 if (beta <= alpha)
                     break;
             }
@@ -189,11 +175,11 @@ int ticTacToe::minMax(int depth, bool maxPlayer, int alpha, int beta) {
                     fields[i][j] = 'X';
                     int tmp = minMax(depth + 1, true, alpha, beta);
                     best = std::min(best, tmp);
-                    beta = std::min(beta, best);
+                    beta = std::min(beta, best); // szukaj bety
                     fields[i][j] = ' ';
                     if (beta <= alpha)
                         break;
-                }
+                }                    // jesli badany ruch jest gorszy od poprzedniego przestan przeszukiwac galaz
                 if (beta <= alpha)
                     break;
             }
@@ -215,7 +201,7 @@ move ticTacToe::bestMove() { // wyszukiwanie najlepszego ruchu
         for (int j = 0; j < size; j++) {
             if (fields[i][j] == ' ') {
                 fields[i][j] = 'O';
-                moveVal = minMax(0, false, -1000, 1000);
+                moveVal = minMax(0, false, -1000, 1000); // oblicz zakladany ruch
                 fields[i][j] = ' ';
                 if (moveVal > best) { // jesli ocena ruchu jest wieksza od najlepszej znalezionej
                     bestMove.bestRow = i; // przypisz wspolrzedne ruchu
