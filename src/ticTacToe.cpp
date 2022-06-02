@@ -5,12 +5,12 @@ ticTacToe::ticTacToe(int newSize, int newMaxDepth, int newWinCharacters) {
     size = newSize;
     fields = new char*[size];
 
-    for(int i = 0; i < size; i++) {
+    for(int i = 0; i < size; i++) { // utworzenie tablicy reprezentujacej plansze
         fields[i] = new char[size];
     }
 
     for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
+        for(int j = 0; j < size; j++) { // wypelnienie planszy pustymi polami
             fields[i][j] = ' ';
         }
     }
