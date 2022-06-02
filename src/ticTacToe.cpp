@@ -108,20 +108,6 @@ int ticTacToe::checkWin() {
         }
     }
 
-
-
-        // for(int i = k; i < winCharacters + k - 1; i++){
-        //     if(fields[size-i-1][i] != fields[size-i-2][i+1]) // sprawdzenie wygranej na drugiej przekątnej
-        //         break;
-        //     if(i == winCharacters + k - 2) {
-        //         if (fields[size-1-k][k]=='X')
-        //             return -10;
-        //         else if (fields[size-1-k][k]=='O')
-        //             return 10;
-        //     }
-        // }
-    
-
     return 0; // jesli nikt nie wygral zwroc 0
 }
 
