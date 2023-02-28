@@ -1,5 +1,5 @@
 # PAMSI-projekt-3
-Gra w kółko i krzyżyk z możliwością wybrania wielkości planszy. Do napisanai gry został wykorzystany algorytm MinMax z alfa - beta cięciami.
+Gra w kółko i krzyżyk z możliwością wybrania wielkości planszy. Do napisania gry został wykorzystany algorytm MinMax z alfa - beta cięciami.
 
 # Wymagania
 1. Linux
